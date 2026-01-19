@@ -1,0 +1,15 @@
+{
+    "$schema": "https://openapi.vercel.sh/vercel.json",
+    "framework": "nextjs",
+    "regions": [
+        "fra1"
+    ],
+    "env": {
+        "DATABASE_URL": "@database_url",
+        "BETTER_AUTH_SECRET": "@better_auth_secret",
+        "BETTER_AUTH_URL": "@better_auth_url",
+        "RESEND_API_KEY": "@resend_api_key",
+        "NEXT_PUBLIC_SITE_URL": "@site_url"
+    },
+    "crons": []
+}
