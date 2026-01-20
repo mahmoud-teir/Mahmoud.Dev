@@ -16,7 +16,7 @@ type BlogPost = {
     excerpt: string | null;
     content: string;
     tags: string[];
-    imageUrl: string | null;
+    image: string | null;
     readTime: number | null;
     status: string;
 };
@@ -30,7 +30,7 @@ export function EditBlogPostForm({ post }: { post: BlogPost }) {
         excerpt: post.excerpt || "",
         content: post.content,
         tags: post.tags.join(", "),
-        imageUrl: post.imageUrl || "",
+        imageUrl: post.image || "",
         readTime: post.readTime?.toString() || "",
         status: post.status,
     });

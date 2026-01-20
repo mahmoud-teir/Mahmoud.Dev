@@ -15,7 +15,7 @@ type Testimonial = {
     role: string;
     company: string | null;
     quote: string;
-    imageUrl: string | null;
+    image: string | null;
     featured: boolean;
 };
 
@@ -27,7 +27,7 @@ export function EditTestimonialForm({ testimonial }: { testimonial: Testimonial 
         role: testimonial.role,
         company: testimonial.company || "",
         quote: testimonial.quote,
-        imageUrl: testimonial.imageUrl || "",
+        imageUrl: testimonial.image || "",
         featured: testimonial.featured,
     });
 

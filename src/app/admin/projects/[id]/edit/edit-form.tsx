@@ -16,7 +16,7 @@ type Project = {
     description: string;
     content: string | null;
     technologies: string[];
-    imageUrl: string | null;
+    image: string | null;
     liveUrl: string | null;
     githubUrl: string | null;
     featured: boolean;
@@ -34,7 +34,7 @@ export function EditProjectForm({ project }: { project: Project }) {
         technologies: project.technologies.join(", "),
         liveUrl: project.liveUrl || "",
         githubUrl: project.githubUrl || "",
-        imageUrl: project.imageUrl || "",
+        imageUrl: project.image || "",
         featured: project.featured,
         status: project.status,
     });
