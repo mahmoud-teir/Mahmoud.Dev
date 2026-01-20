@@ -1,8 +1,6 @@
-import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
 import { db } from "@/lib/db";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { BlogGrid } from "@/components/blog-grid";
 
 type Props = {
     params: Promise<{ locale: string }>;
@@ -32,53 +30,7 @@ export default async function BlogPage({ params }: Props) {
                     </p>
                 </div>
 
-                {posts.length === 0 ? (
-                    <p className="text-center text-muted-foreground">{t("noPosts")}</p>
-                ) : (
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {posts.map((post) => (
-                            <Card key={post.id} className="overflow-hidden">
-                                <div className="aspect-video bg-muted" />
-                                <CardContent className="p-6">
-                                    <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                                        {post.publishedAt && (
-                                            <span>
-                                                {new Date(post.publishedAt).toLocaleDateString(locale, {
-                                                    year: "numeric",
-                                                    month: "long",
-                                                    day: "numeric",
-                                                })}
-                                            </span>
-                                        )}
-                                        {post.readTime && (
-                                            <>
-                                                <span>•</span>
-                                                <span>{post.readTime} {t("minRead")}</span>
-                                            </>
-                                        )}
-                                    </div>
-                                    <Link href={`/blog/${post.slug}`}>
-                                        <h2 className="text-xl font-semibold mb-2 hover:text-primary transition-colors">
-                                            {post.title}
-                                        </h2>
-                                    </Link>
-                                    {post.excerpt && (
-                                        <p className="text-muted-foreground mb-4 line-clamp-2">
-                                            {post.excerpt}
-                                        </p>
-                                    )}
-                                    <div className="flex flex-wrap gap-2">
-                                        {post.tags.slice(0, 3).map((tag: string) => (
-                                            <Badge key={tag} variant="secondary">
-                                                {tag}
-                                            </Badge>
-                                        ))}
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        ))}
-                    </div>
-                )}
+                <BlogGrid posts={posts} locale={locale} />
             </div>
         </div>
     );
