@@ -34,7 +34,7 @@ export async function submitContactForm(data: ContactInput) {
 
         // Send email notification
         await sendEmail({
-            to: process.env.ADMIN_EMAIL || "mahmoud@example.com",
+            to: process.env.ADMIN_EMAIL || "mahmoudteirbusiness@gmail.com",
             subject: `New Contact: ${validated.subject || "No Subject"}`,
             html: `
         <h2>New Contact Form Submission</h2>

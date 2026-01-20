@@ -116,8 +116,8 @@ export default function ContactPage() {
                                 </CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <a href="mailto:contact@mahmoudabuteir.com" className="text-primary hover:underline">
-                                    contact@mahmoudabuteir.com
+                                <a href="mailto:mahmoudteirbusiness@gmail.com" className="text-primary hover:underline">
+                                    mahmoudteirbusiness@gmail.com
                                 </a>
                             </CardContent>
                         </Card>
