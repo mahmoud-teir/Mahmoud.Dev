@@ -3,6 +3,7 @@ import { Inter, Cairo } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
+import "@uploadthing/react/styles.css";
 
 const inter = Inter({
   variable: "--font-inter",
