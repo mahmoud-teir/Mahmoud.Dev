@@ -91,7 +91,7 @@ export default function NewTestimonialPage() {
                             />
                         </div>
                         <div className="space-y-2">
-                            <label className="text-sm font-medium">Photo URL</label>
+                            <label className="text-sm font-medium">Client Photo</label>
                             <ImageUploader
                                 value={formData.imageUrl}
                                 onChange={(url) => setFormData({ ...formData, imageUrl: url })}

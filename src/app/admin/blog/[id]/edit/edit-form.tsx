@@ -166,7 +166,7 @@ export function EditBlogPostForm({ post }: { post: BlogPost }) {
                     </CardHeader>
                     <CardContent className="space-y-4">
                         <div className="space-y-2">
-                            <label className="text-sm font-medium">Featured Image URL</label>
+                            <label className="text-sm font-medium">Featured Image</label>
                             <ImageUploader
                                 value={formData.imageUrl}
                                 onChange={(url) => setFormData({ ...formData, imageUrl: url })}

@@ -87,7 +87,7 @@ export function SettingsForm({ settings }: { settings: Settings }) {
                         />
                     </div>
                     <div className="space-y-2">
-                        <label className="text-sm font-medium">CV URL</label>
+                        <label className="text-sm font-medium">CV</label>
                         <div className="space-y-4">
                             <UploadDropzone
                                 endpoint="cvUploader"
