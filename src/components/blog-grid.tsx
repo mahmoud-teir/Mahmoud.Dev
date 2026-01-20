@@ -17,7 +17,7 @@ type BlogPost = {
     tags: string[];
     readTime: number | null;
     publishedAt: Date | null;
-    imageUrl: string | null;
+    image: string | null;
 };
 
 const POSTS_PER_PAGE = 6;
@@ -106,9 +106,9 @@ export function BlogGrid({ posts, locale }: { posts: BlogPost[]; locale: string 
                     {paginatedPosts.map((post) => (
                         <Card key={post.id} className="overflow-hidden">
                             <div className="aspect-video bg-muted">
-                                {post.imageUrl && (
+                                {post.image && (
                                     <img
-                                        src={post.imageUrl}
+                                        src={post.image}
                                         alt={post.title}
                                         className="w-full h-full object-cover"
                                     />

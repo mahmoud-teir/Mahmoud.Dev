@@ -89,10 +89,10 @@ export default async function BlogPostPage({ params }: Props) {
                     </header>
 
                     {/* Featured Image */}
-                    {post.imageUrl && (
+                    {post.image && (
                         <div className="aspect-video bg-muted rounded-lg overflow-hidden mb-8">
                             <img
-                                src={post.imageUrl}
+                                src={post.image}
                                 alt={post.title}
                                 className="w-full h-full object-cover"
                             />

@@ -17,7 +17,7 @@ type Project = {
     technologies: string[];
     liveUrl: string | null;
     githubUrl: string | null;
-    imageUrl: string | null;
+    image: string | null;
 };
 
 export function ProjectsGrid({ projects }: { projects: Project[] }) {
@@ -54,9 +54,9 @@ export function ProjectsGrid({ projects }: { projects: Project[] }) {
                     {filteredProjects.map((project) => (
                         <Card key={project.id} className="overflow-hidden">
                             <div className="aspect-video bg-muted">
-                                {project.imageUrl && (
+                                {project.image && (
                                     <img
-                                        src={project.imageUrl}
+                                        src={project.image}
                                         alt={project.title}
                                         className="w-full h-full object-cover"
                                     />

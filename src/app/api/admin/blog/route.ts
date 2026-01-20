@@ -12,7 +12,7 @@ export async function POST(request: Request) {
                 excerpt: data.excerpt || null,
                 content: data.content,
                 tags: data.tags || [],
-                imageUrl: data.imageUrl || null,
+                image: data.imageUrl || null,
                 readTime: data.readTime || null,
                 status: data.status || "DRAFT",
                 publishedAt: data.status === "PUBLISHED" ? new Date() : null,
@@ -40,7 +40,7 @@ export async function PUT(request: Request) {
                 excerpt: data.excerpt || null,
                 content: data.content,
                 tags: data.tags || [],
-                imageUrl: data.imageUrl || null,
+                image: data.imageUrl || null,
                 readTime: data.readTime || null,
                 status: data.status || "DRAFT",
                 publishedAt:

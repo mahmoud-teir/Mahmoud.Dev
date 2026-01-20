@@ -66,10 +66,10 @@ export default async function ProjectDetailPage({ params }: Props) {
                 </div>
 
                 {/* Project Image */}
-                {project.imageUrl && (
+                {project.image && (
                     <div className="aspect-video bg-muted rounded-lg overflow-hidden mb-8">
                         <img
-                            src={project.imageUrl}
+                            src={project.image}
                             alt={project.title}
                             className="w-full h-full object-cover"
                         />
