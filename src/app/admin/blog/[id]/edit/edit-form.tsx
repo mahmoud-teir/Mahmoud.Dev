@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
 import { Save, ArrowLeft, Trash2 } from "lucide-react";
 import Link from "next/link";
+import { ImageUploader } from "@/components/image-uploader";
 
 type BlogPost = {
     id: string;
@@ -166,9 +167,10 @@ export function EditBlogPostForm({ post }: { post: BlogPost }) {
                     <CardContent className="space-y-4">
                         <div className="space-y-2">
                             <label className="text-sm font-medium">Featured Image URL</label>
-                            <Input
+                            <ImageUploader
                                 value={formData.imageUrl}
-                                onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
+                                onChange={(url) => setFormData({ ...formData, imageUrl: url })}
+                                endpoint="imageUploader"
                             />
                         </div>
                         <div className="space-y-2">
