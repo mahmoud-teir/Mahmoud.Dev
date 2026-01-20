@@ -148,6 +148,11 @@ export default function NewProjectPage() {
                                 onChange={(url) => setFormData({ ...formData, imageUrl: url })}
                                 endpoint="imageUploader"
                             />
+                            <Input
+                                value={formData.imageUrl}
+                                onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
+                                placeholder="https://example.com/project-image.jpg"
+                            />
                         </div>
                         <div className="space-y-2">
                             <label className="text-sm font-medium">Live Demo URL</label>

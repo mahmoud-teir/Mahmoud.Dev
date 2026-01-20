@@ -97,6 +97,11 @@ export default function NewTestimonialPage() {
                                 onChange={(url) => setFormData({ ...formData, imageUrl: url })}
                                 endpoint="imageUploader"
                             />
+                            <Input
+                                value={formData.imageUrl}
+                                onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
+                                placeholder="https://example.com/photo.jpg"
+                            />
                         </div>
                     </CardContent>
                 </Card>
