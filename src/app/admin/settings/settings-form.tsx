@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { toast } from "sonner";
 import { Save } from "lucide-react";
+import { UploadDropzone } from "@/lib/uploadthing";
 
 type Settings = {
     id: string;
@@ -87,11 +88,37 @@ export function SettingsForm({ settings }: { settings: Settings }) {
                     </div>
                     <div className="space-y-2">
                         <label className="text-sm font-medium">CV URL</label>
-                        <Input
-                            value={formData.cvUrl}
-                            onChange={(e) => setFormData({ ...formData, cvUrl: e.target.value })}
-                            placeholder="https://example.com/cv.pdf"
-                        />
+                        <div className="space-y-4">
+                            <UploadDropzone
+                                endpoint="cvUploader"
+                                onClientUploadComplete={(res: any) => {
+                                    if (res && res[0]) {
+                                        setFormData({ ...formData, cvUrl: res[0].url });
+                                        toast.success("CV uploaded successfully!");
+                                    }
+                                }}
+                                onUploadError={(error: Error) => {
+                                    toast.error(`Error uploading CV: ${error.message}`);
+                                }}
+                            />
+                            <div className="flex gap-2">
+                                <Input
+                                    value={formData.cvUrl}
+                                    onChange={(e) => setFormData({ ...formData, cvUrl: e.target.value })}
+                                    placeholder="https://example.com/cv.pdf"
+                                />
+                                {formData.cvUrl && (
+                                    <Button
+                                        type="button"
+                                        variant="outline"
+                                        size="icon"
+                                        onClick={() => window.open(formData.cvUrl, "_blank")}
+                                    >
+                                        <Save className="h-4 w-4" /> {/* Using Save icon for now or ExternalLink if imported */}
+                                    </Button>
+                                )}
+                            </div>
+                        </div>
                     </div>
                     <div className="space-y-2">
                         <label className="text-sm font-medium">Contact Email</label>
