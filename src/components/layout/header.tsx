@@ -1,16 +1,22 @@
-import Link from "next/link";
+"use client";
+
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { ThemeToggle } from "@/components/theme-toggle";
+import LanguageSwitcher from "@/components/language-switcher";
 import { Button } from "@/components/ui/button";
 
-const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/projects", label: "Projects" },
-    { href: "/blog", label: "Blog" },
-    { href: "/experience", label: "Experience" },
-    { href: "/contact", label: "Contact" },
-];
+export default function Header() {
+    const t = useTranslations("nav");
 
-export function Header() {
+    const navLinks = [
+        { href: "/", label: t("home") },
+        { href: "/projects", label: t("projects") },
+        { href: "/blog", label: t("blog") },
+        { href: "/experience", label: t("experience") },
+        { href: "/contact", label: t("contact") },
+    ];
+
     return (
         <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container flex h-16 items-center justify-between">
@@ -31,9 +37,10 @@ export function Header() {
                 </nav>
 
                 <div className="flex items-center gap-2">
+                    <LanguageSwitcher />
                     <ThemeToggle />
                     <Button asChild className="hidden md:inline-flex">
-                        <Link href="/contact">Get in Touch</Link>
+                        <Link href="/contact">{t("contact")}</Link>
                     </Button>
                 </div>
             </div>

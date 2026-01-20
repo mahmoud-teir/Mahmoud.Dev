@@ -1,4 +1,5 @@
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -35,7 +36,15 @@ async function getData() {
     return { projects, testimonials, settings };
 }
 
-export default async function HomePage() {
+type Props = {
+    params: Promise<{ locale: string }>;
+};
+
+export default async function HomePage({ params }: Props) {
+    const { locale } = await params;
+    setRequestLocale(locale);
+
+    const t = await getTranslations();
     const { projects, testimonials, settings } = await getData();
 
     return (
@@ -43,25 +52,24 @@ export default async function HomePage() {
             {/* Hero Section */}
             <section className="py-20 md:py-32">
                 <div className="container text-center">
-                    <p className="text-primary font-medium mb-4">👋 Hi, I&apos;m</p>
+                    <p className="text-primary font-medium mb-4">👋 {t("hero.greeting")}</p>
                     <h1 className="text-4xl md:text-6xl font-bold mb-4">
-                        Mahmoud Abu Teir
+                        {t("hero.name")}
                     </h1>
                     <p className="text-xl md:text-2xl text-muted-foreground mb-8">
-                        Full-Stack Developer
+                        {t("hero.title")}
                     </p>
                     <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-                        I build modern web applications with Next.js, React, and TypeScript
-                        to create beautiful, performant user experiences.
+                        {t("hero.description")}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Button asChild size="lg">
                             <Link href="/projects">
-                                View Projects <ArrowRight className="ml-2 h-4 w-4" />
+                                {t("hero.cta")} <ArrowRight className="ms-2 h-4 w-4" />
                             </Link>
                         </Button>
                         <Button variant="outline" size="lg" asChild>
-                            <Link href="/contact">Get in Touch</Link>
+                            <Link href="/contact">{t("hero.contact")}</Link>
                         </Button>
                     </div>
                 </div>
@@ -70,16 +78,15 @@ export default async function HomePage() {
             {/* About Section */}
             <section className="py-16 bg-muted/50">
                 <div className="container">
-                    <h2 className="text-3xl font-bold text-center mb-12">About Me</h2>
+                    <h2 className="text-3xl font-bold text-center mb-12">{t("about.title")}</h2>
                     <div className="max-w-3xl mx-auto text-center">
                         <p className="text-lg text-muted-foreground mb-6">
-                            {settings?.bio ||
-                                "Passionate developer with expertise in building scalable web applications."}
+                            {settings?.bio || t("about.description")}
                         </p>
                         {settings?.cvUrl && (
                             <Button variant="outline" asChild>
                                 <Link href={settings.cvUrl} target="_blank">
-                                    <Download className="mr-2 h-4 w-4" /> Download CV
+                                    <Download className="me-2 h-4 w-4" /> Download CV
                                 </Link>
                             </Button>
                         )}
@@ -91,7 +98,7 @@ export default async function HomePage() {
             <section className="py-16">
                 <div className="container">
                     <h2 className="text-3xl font-bold text-center mb-12">
-                        Featured Projects
+                        {t("projects.featured")}
                     </h2>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {projects.map((project) => (
@@ -103,7 +110,7 @@ export default async function HomePage() {
                                         {project.description}
                                     </p>
                                     <div className="flex flex-wrap gap-2 mb-4">
-                                        {project.technologies.slice(0, 3).map((tech) => (
+                                        {project.technologies.slice(0, 3).map((tech: string) => (
                                             <Badge key={tech} variant="secondary">
                                                 {tech}
                                             </Badge>
@@ -113,14 +120,14 @@ export default async function HomePage() {
                                         {project.liveUrl && (
                                             <Button size="sm" asChild>
                                                 <Link href={project.liveUrl} target="_blank">
-                                                    <ExternalLink className="mr-1 h-3 w-3" /> Live
+                                                    <ExternalLink className="me-1 h-3 w-3" /> {t("projects.liveDemo")}
                                                 </Link>
                                             </Button>
                                         )}
                                         {project.githubUrl && (
                                             <Button size="sm" variant="outline" asChild>
                                                 <Link href={project.githubUrl} target="_blank">
-                                                    <Github className="mr-1 h-3 w-3" /> Code
+                                                    <Github className="me-1 h-3 w-3" /> {t("projects.sourceCode")}
                                                 </Link>
                                             </Button>
                                         )}
@@ -132,7 +139,7 @@ export default async function HomePage() {
                     <div className="text-center mt-8">
                         <Button variant="outline" asChild>
                             <Link href="/projects">
-                                View All Projects <ArrowRight className="ml-2 h-4 w-4" />
+                                {t("projects.viewAll")} <ArrowRight className="ms-2 h-4 w-4" />
                             </Link>
                         </Button>
                     </div>
@@ -143,7 +150,7 @@ export default async function HomePage() {
             <section className="py-16 bg-muted/50">
                 <div className="container">
                     <h2 className="text-3xl font-bold text-center mb-12">
-                        Skills & Technologies
+                        {t("skills.title")}
                     </h2>
                     <div className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
                         {skills.map((skill) => (
@@ -160,7 +167,7 @@ export default async function HomePage() {
                 <section className="py-16">
                     <div className="container">
                         <h2 className="text-3xl font-bold text-center mb-12">
-                            What People Say
+                            {t("testimonials.title")}
                         </h2>
                         <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
                             {testimonials.map((testimonial) => (
@@ -187,12 +194,12 @@ export default async function HomePage() {
             {/* CTA Section */}
             <section className="py-20 bg-primary text-primary-foreground">
                 <div className="container text-center">
-                    <h2 className="text-3xl font-bold mb-4">Let&apos;s Work Together</h2>
+                    <h2 className="text-3xl font-bold mb-4">{t("cta.title")}</h2>
                     <p className="text-lg mb-8 opacity-90">
-                        Have a project in mind? Let&apos;s discuss how I can help.
+                        {t("cta.description")}
                     </p>
                     <Button size="lg" variant="secondary" asChild>
-                        <Link href="/contact">Get in Touch</Link>
+                        <Link href="/contact">{t("cta.button")}</Link>
                     </Button>
                 </div>
             </section>

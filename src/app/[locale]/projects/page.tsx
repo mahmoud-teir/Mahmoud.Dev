@@ -1,57 +1,49 @@
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { db } from "@/lib/db";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { Github, ExternalLink } from "lucide-react";
-import type { Metadata } from "next";
+import { ExternalLink, Github } from "lucide-react";
 
-export const metadata: Metadata = {
-    title: "Projects",
-    description: "Explore my portfolio of web development projects built with modern technologies.",
+type Props = {
+    params: Promise<{ locale: string }>;
 };
 
 async function getProjects() {
     return db.project.findMany({
         where: { status: "PUBLISHED" },
-        orderBy: [{ featured: "desc" }, { order: "asc" }, { createdAt: "desc" }],
+        orderBy: [{ featured: "desc" }, { order: "asc" }],
     });
 }
 
-type ProjectType = Awaited<ReturnType<typeof getProjects>>[number];
+export default async function ProjectsPage({ params }: Props) {
+    const { locale } = await params;
+    setRequestLocale(locale);
 
-export default async function ProjectsPage() {
+    const t = await getTranslations("projects");
     const projects = await getProjects();
 
     return (
         <div className="py-16">
             <div className="container">
                 <div className="text-center mb-12">
-                    <h1 className="text-4xl font-bold mb-4">My Projects</h1>
+                    <h1 className="text-4xl font-bold mb-4">{t("title")}</h1>
                     <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                        A collection of projects I&apos;ve worked on, showcasing my skills in web development.
+                        {t("subtitle")}
                     </p>
                 </div>
 
                 {projects.length === 0 ? (
-                    <p className="text-center text-muted-foreground">No projects yet.</p>
+                    <p className="text-center text-muted-foreground">{t("noProjects")}</p>
                 ) : (
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {projects.map((project: ProjectType) => (
-                            <Card key={project.id} className="overflow-hidden group">
-                                <div className="aspect-video bg-muted relative">
-                                    {project.image && (
-                                        // eslint-disable-next-line @next/next/no-img-element
-                                        <img
-                                            src={project.image}
-                                            alt={project.title}
-                                            className="object-cover w-full h-full"
-                                        />
-                                    )}
-                                </div>
+                        {projects.map((project) => (
+                            <Card key={project.id} className="overflow-hidden">
+                                <div className="aspect-video bg-muted" />
                                 <CardContent className="p-6">
                                     <Link href={`/projects/${project.slug}`}>
-                                        <h2 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                                        <h2 className="text-xl font-semibold mb-2 hover:text-primary transition-colors">
                                             {project.title}
                                         </h2>
                                     </Link>
@@ -69,14 +61,14 @@ export default async function ProjectsPage() {
                                         {project.liveUrl && (
                                             <Button size="sm" asChild>
                                                 <Link href={project.liveUrl} target="_blank">
-                                                    <ExternalLink className="mr-1 h-3 w-3" /> Live Demo
+                                                    <ExternalLink className="me-1 h-3 w-3" /> {t("liveDemo")}
                                                 </Link>
                                             </Button>
                                         )}
                                         {project.githubUrl && (
                                             <Button size="sm" variant="outline" asChild>
                                                 <Link href={project.githubUrl} target="_blank">
-                                                    <Github className="mr-1 h-3 w-3" /> Source
+                                                    <Github className="me-1 h-3 w-3" /> {t("sourceCode")}
                                                 </Link>
                                             </Button>
                                         )}
