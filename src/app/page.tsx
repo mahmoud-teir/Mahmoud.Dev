@@ -20,20 +20,24 @@ const skills = [
 ];
 
 async function getData() {
-    const [projects, testimonials, settings] = await Promise.all([
-        db.project.findMany({
-            where: { status: "PUBLISHED", featured: true },
-            take: 3,
-            orderBy: { order: "asc" },
-        }),
-        db.testimonial.findMany({
-            where: { featured: true },
-            take: 3,
-            orderBy: { order: "asc" },
-        }),
-        db.siteSettings.findUnique({ where: { id: "settings" } }),
-    ]);
-    return { projects, testimonials, settings };
+    // Current execution: Sequential to avoid connection pool timeouts on cold starts
+    const settings = await db.siteSettings.findUnique({
+        where: { id: "default" },
+    });
+
+    const projects = await db.project.findMany({
+        where: { status: "PUBLISHED", featured: true },
+        take: 3,
+        orderBy: { order: "asc" },
+    });
+
+    const testimonials = await db.testimonial.findMany({
+        where: { featured: true },
+        take: 3,
+        orderBy: { order: "asc" },
+    });
+
+    return [projects, testimonials, settings] as const;
 }
 
 type Props = {
@@ -45,7 +49,7 @@ export default async function HomePage({ params }: Props) {
     setRequestLocale(locale);
 
     const t = await getTranslations();
-    const { projects, testimonials, settings } = await getData();
+    const [projects, testimonials, settings] = await getData();
 
     return (
         <div className="flex flex-col">

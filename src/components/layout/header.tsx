@@ -19,9 +19,8 @@ export default function Header() {
     return (
         <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container flex h-16 items-center justify-between">
-                <Link href="/" className="font-bold text-2xl tracking-tighter hover:opacity-80 transition-opacity flex items-center gap-2">
-                    <img src="/logo.png" alt="Logo" className="h-8 w-auto" />
-                    <span>Mahmoud<span className="text-primary">.Dev</span></span>
+                <Link href="/" className="font-bold text-2xl tracking-tighter hover:opacity-80 transition-opacity">
+                    Mahmoud<span className="text-primary">.Dev</span>
                 </Link>
 
                 <nav className="hidden md:flex items-center gap-6">
