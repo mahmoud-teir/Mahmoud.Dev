@@ -12,12 +12,16 @@ import {
     MessageSquare,
     Settings,
     LogOut,
+    Sparkles,
+    Award,
 } from "lucide-react";
 
 const navItems = [
     { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
     { href: "/admin/projects", label: "Projects", icon: FolderKanban },
     { href: "/admin/blog", label: "Blog", icon: FileText },
+    { href: "/admin/skills", label: "Skills", icon: Sparkles },
+    { href: "/admin/certifications", label: "Certifications", icon: Award },
     { href: "/admin/testimonials", label: "Testimonials", icon: MessageSquare },
     { href: "/admin/messages", label: "Messages", icon: MessageSquare },
     { href: "/admin/settings", label: "Settings", icon: Settings },

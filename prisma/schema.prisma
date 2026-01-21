@@ -162,6 +162,35 @@ model SiteSettings {
   updatedAt DateTime @updatedAt
 }
 
+// ============ ENHANCED ABOUT PAGE MODELS ============
+
+model Skill {
+  id          String   @id @default(cuid())
+  name        String
+  nameAr      String?
+  category    String   // Frontend, Backend, Database, Tools, etc.
+  proficiency Int      @default(80) // 0-100 percentage
+  icon        String?  // Optional icon name or URL
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Certification {
+  id          String    @id @default(cuid())
+  name        String
+  nameAr      String?
+  issuer      String    // e.g., "Google", "AWS", "Coursera"
+  issuerAr    String?
+  image       String?   // Certificate image or issuer logo
+  url         String?   // Link to verify/view certificate
+  issueDate   DateTime
+  expiryDate  DateTime?
+  order       Int       @default(0)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
 enum Status {
   DRAFT
   PUBLISHED
