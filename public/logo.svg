@@ -1,0 +1,22 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Strong Geometric Background/Container (Optional, keeping it open for now) -->
+  
+  <!-- Stylized 'M' with Tech feel -->
+  <path d="M15 30 L15 80 L35 80 L35 55 L50 70 L65 55 L65 80 L85 80 L85 30 L65 30 L50 45 L35 30 Z" 
+        fill="url(#gradient)" 
+        stroke="white" 
+        stroke-width="2"
+        stroke-linejoin="round"/>
+  
+  <!-- Coding Brackets Accent -->
+  <path d="M5 25 L15 25 L15 85 L5 85" stroke="#3b82f6" stroke-width="4" stroke-linecap="round"/>
+  <path d="M95 25 L85 25 L85 85 L95 85" stroke="#3b82f6" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Gradient Definition -->
+  <defs>
+    <linearGradient id="gradient" x1="15" y1="30" x2="85" y2="80" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0ea5e9" /> <!-- Sky 500 -->
+      <stop offset="1" stop-color="#6366f1" /> <!-- Indigo 500 -->
+    </linearGradient>
+  </defs>
+</svg>
