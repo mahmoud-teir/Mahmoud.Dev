@@ -1,0 +1,9 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Greater Than Sign -->
+    <path d="M15 25 L50 50 L15 75" />
+    
+    <!-- Underscore / Cursor (Blinking style filled) -->
+    <rect x="55" y="60" width="30" height="15" fill="currentColor" stroke="none"/>
+  </g>
+</svg>
