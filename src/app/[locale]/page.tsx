@@ -62,13 +62,13 @@ export default async function HomePage({ params }: Props) {
                     <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
                         {t("hero.description")}
                     </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Button asChild size="lg">
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md mx-auto">
+                        <Button asChild size="lg" className="w-full sm:w-auto">
                             <Link href="/projects">
                                 {t("hero.cta")} <ArrowRight className="ms-2 h-4 w-4" />
                             </Link>
                         </Button>
-                        <Button variant="outline" size="lg" asChild>
+                        <Button variant="outline" size="lg" asChild className="w-full sm:w-auto">
                             <Link href="/contact">{t("hero.contact")}</Link>
                         </Button>
                     </div>
