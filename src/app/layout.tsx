@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { Inter, Cairo } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
+import { NextIntlClientProvider } from "next-intl";
+import Header from "@/components/layout/header";
+import Footer from "@/components/layout/footer";
+import messages from "../../messages/en.json";
 import "./globals.css";
 import "@uploadthing/react/styles.css";
 
@@ -50,8 +54,14 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${cairo.variable} font-sans antialiased`}>
         <ThemeProvider>
-          {children}
-          <Toaster />
+          <NextIntlClientProvider messages={messages} locale="en">
+            <Header />
+            <main className="min-h-screen">
+              {children}
+            </main>
+            <Footer />
+            <Toaster />
+          </NextIntlClientProvider>
         </ThemeProvider>
       </body>
     </html>

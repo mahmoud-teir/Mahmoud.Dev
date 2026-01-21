@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import Link from "next/link";
 import { Github, Linkedin, Twitter, Heart } from "lucide-react";
 
 export default function Footer() {

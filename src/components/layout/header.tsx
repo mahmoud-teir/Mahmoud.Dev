@@ -1,9 +1,8 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
-import LanguageSwitcher from "@/components/language-switcher";
 import { Button } from "@/components/ui/button";
 
 export default function Header() {
@@ -38,7 +37,6 @@ export default function Header() {
                 </nav>
 
                 <div className="flex items-center gap-2">
-                    <LanguageSwitcher />
                     <ThemeToggle />
                     <Button asChild className="hidden md:inline-flex">
                         <Link href="/contact">{t("contact")}</Link>
