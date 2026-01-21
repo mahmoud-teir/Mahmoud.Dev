@@ -27,7 +27,7 @@ model Account {
 }
 
 model BlogPost {
-  id          String    @id
+  id          String    @id @default(cuid())
   slug        String    @unique
   title       String
   titleAr     String?
@@ -41,11 +41,11 @@ model BlogPost {
   status      Status    @default(DRAFT)
   publishedAt DateTime?
   createdAt   DateTime  @default(now())
-  updatedAt   DateTime
+  updatedAt   DateTime  @updatedAt
 }
 
 model Certification {
-  id         String    @id
+  id         String    @id @default(cuid())
   name       String
   nameAr     String?
   issuer     String
@@ -56,11 +56,11 @@ model Certification {
   expiryDate DateTime?
   order      Int       @default(0)
   createdAt  DateTime  @default(now())
-  updatedAt  DateTime
+  updatedAt  DateTime  @updatedAt
 }
 
 model ContactMessage {
-  id        String   @id
+  id        String   @id @default(cuid())
   name      String
   email     String
   subject   String?
@@ -70,7 +70,7 @@ model ContactMessage {
 }
 
 model Experience {
-  id            String    @id
+  id            String    @id @default(cuid())
   company       String
   companyAr     String?
   role          String
@@ -83,11 +83,11 @@ model Experience {
   current       Boolean   @default(false)
   order         Int       @default(0)
   createdAt     DateTime  @default(now())
-  updatedAt     DateTime
+  updatedAt     DateTime  @updatedAt
 }
 
 model Project {
-  id            String   @id
+  id            String   @id @default(cuid())
   slug          String   @unique
   title         String
   titleAr       String?
@@ -104,18 +104,18 @@ model Project {
   status        Status   @default(DRAFT)
   order         Int      @default(0)
   createdAt     DateTime @default(now())
-  updatedAt     DateTime
+  updatedAt     DateTime @updatedAt
 }
 
 model Session {
-  id        String   @id
+  id        String   @id @default(cuid())
   userId    String
   token     String   @unique
   expiresAt DateTime
   ipAddress String?
   userAgent String?
   createdAt DateTime @default(now())
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
   User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
@@ -128,11 +128,11 @@ model SiteSettings {
   github    String?
   linkedin  String?
   twitter   String?
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
 }
 
 model Skill {
-  id          String   @id
+  id          String   @id @default(cuid())
   name        String
   nameAr      String?
   category    String
@@ -140,11 +140,11 @@ model Skill {
   icon        String?
   order       Int      @default(0)
   createdAt   DateTime @default(now())
-  updatedAt   DateTime
+  updatedAt   DateTime @updatedAt
 }
 
 model Testimonial {
-  id        String   @id
+  id        String   @id @default(cuid())
   name      String
   role      String
   roleAr    String?
@@ -156,28 +156,28 @@ model Testimonial {
   featured  Boolean  @default(false)
   order     Int      @default(0)
   createdAt DateTime @default(now())
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
 }
 
 model User {
-  id            String    @id
+  id            String    @id @default(cuid())
   email         String    @unique
   name          String?
   image         String?
   emailVerified Boolean   @default(false)
   createdAt     DateTime  @default(now())
-  updatedAt     DateTime
+  updatedAt     DateTime  @updatedAt
   Account       Account[]
   Session       Session[]
 }
 
 model Verification {
-  id         String   @id
+  id         String   @id @default(cuid())
   identifier String
   value      String
   expiresAt  DateTime
   createdAt  DateTime @default(now())
-  updatedAt  DateTime
+  updatedAt  DateTime @updatedAt
 
   @@unique([identifier, value])
 }
