@@ -105,3 +105,4 @@ The project is optimized for deployment on **Vercel**.
 ## 📜 License
 
 This project is licensed under the MIT License.
+\n<- Detail pages: project, blog Deployed at Wed Jan 21 06:43:38 PM EET 2026 -->
