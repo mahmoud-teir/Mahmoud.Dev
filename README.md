@@ -1,108 +1,149 @@
-# Mahmoud Abu Teir - Professional Portfolio
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Outfit&weight=700&size=40&duration=4000&pause=1000&color=2563EB&center=true&vCenter=true&width=600&lines=Mahmoud+Abu+Teir;Full-Stack+Developer;Next.js+%7C+React+%7C+TypeScript" alt="Typing SVG" />
+</p>
 
-![Project Banner](https://placehold.co/1200x400/2563eb/ffffff?text=Mahmoud+Abu+Teir+Portfolio)
+<p align="center">
+  <a href="https://mahmoudabuteir.com"><img src="https://img.shields.io/badge/Portfolio-2563EB?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Portfolio"/></a>
+  <a href="https://linkedin.com/in/mahmoudabuteir"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
+  <a href="https://github.com/mahmoud-teir"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/></a>
+</p>
 
-A high-performance, bilingual, and fully dynamic portfolio website designed to showcase skills, projects, and professional experience. Built with the **Next.js 15 App Router** and a modern tech stack.
+---
+
+## 👨‍💻 About This Project
+
+A **high-performance, bilingual, and fully dynamic** portfolio website designed to showcase skills, projects, and professional experience. Built with the **Next.js 15 App Router** and a modern tech stack.
+
+```yaml
+Name: Mahmoud Abu Teir
+Role: Full-Stack Developer
+Location: Palestine
+Languages: [Arabic, English]
+Interests: [Web Development, Open Source, UI/UX Design]
+Currently Learning: Advanced React Patterns, System Design
+```
+
+---
 
 ## 🚀 Features
 
-### Public Interface
-- **🌍 Bilingual Support**: Complete Arabic/English internationalization with automatic RTL layout.
-- **🎨 Modern UI/UX**: Dark/Light mode toggle, smooth animations, and responsive design using Tailwind CSS 4 & Shadcn/ui.
-- **⚡ High Performance**: Utilizing SSG (Static Site Generation) and ISR (Incremental Static Regeneration) for lightning-fast page loads.
-- **🔍 Advanced Search & Filter**: Filter projects by technology and search blog posts instantly.
-- **📄 CV Download**: Integrated option to download the resume directly.
-- **📨 Contact System**: Secure contact form with rate limiting and instant email notifications via Resend.
+### 🌐 Public Interface
+| Feature | Description |
+|---------|-------------|
+| 🌍 **Bilingual** | Complete Arabic/English with automatic RTL |
+| 🎨 **Modern UI** | Dark/Light mode, smooth animations |
+| ⚡ **Performance** | SSG + ISR for lightning-fast loads |
+| 🔍 **Search** | Filter projects by tech, search blog |
+| 📄 **CV Download** | Direct resume download |
+| 📨 **Contact** | Rate-limited form with email via Resend |
 
-### Admin Dashboard (CMS)
-- **🔐 Secure Authentication**: Protected admin routes using Better Auth.
-- **📂 Project Management**: Create, edit, and delete projects with rich details and drag-and-drop image uploads.
-- **📝 Blog System**: Full-featured blog editor with rich text support, tags, and SEO settings.
-- **💬 Testimonials**: Manage client reviews and photos.
-- **⚙️ Site Settings**: Update bio, social links, and CV file directly from the dashboard.
-- **📥 File Management**: Integrated **Uploadthing** for seamless image and PDF uploads.
+### 🔐 Admin Dashboard (CMS)
+| Feature | Description |
+|---------|-------------|
+| 📂 **Projects** | CRUD with drag-and-drop image uploads |
+| 📝 **Blog** | Rich editor with tags and SEO |
+| 💬 **Testimonials** | Manage client reviews |
+| ⚙️ **Settings** | Update bio, social links, CV |
+| 📥 **Uploads** | Integrated Uploadthing |
 
-## 🛠️ Tech Stack
+---
 
-- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/) & [Shadcn/ui](https://ui.shadcn.com/)
-- **Database**: [PostgreSQL](https://www.postgresql.org/) (via [Neon](https://neon.tech/))
-- **ORM**: [Prisma](https://www.prisma.io/)
-- **Authentication**: [Better Auth](https://www.better-auth.com/)
-- **File Storage**: [Uploadthing](https://uploadthing.com/)
-- **Email Service**: [Resend](https://resend.com/)
-- **Internationalization**: [next-intl](https://next-intl-docs.vercel.app/)
+## 🧰 Tech Stack
+
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=nextjs,react,typescript,tailwind,nodejs,postgres,prisma,vercel&theme=dark" alt="Tech Stack" />
+</p>
+
+| Category | Technologies |
+|----------|-------------|
+| **Framework** | Next.js 15 (App Router) |
+| **Language** | TypeScript |
+| **Styling** | Tailwind CSS 4 + Shadcn/ui |
+| **Database** | PostgreSQL (Neon) |
+| **ORM** | Prisma |
+| **Auth** | Better Auth |
+| **Storage** | Uploadthing |
+| **Email** | Resend |
+| **i18n** | next-intl |
+
+---
 
 ## 🏁 Getting Started
 
 ### Prerequisites
 - Node.js 18+
 - npm or pnpm
-- A PostgreSQL database (e.g., local or Neon)
+- PostgreSQL database
 
-### Installation
+### Quick Start
 
-1.  **Clone the repository**
-    ```bash
-    git clone https://github.com/mahmoud-teir/Mahmoud.Dev.git
-    cd Mahmoud.Dev
-    ```
+```bash
+# Clone the repository
+git clone https://github.com/mahmoud-teir/Mahmoud.Dev.git
+cd Mahmoud.Dev
 
-2.  **Install dependencies**
-    ```bash
-    npm install
-    ```
+# Install dependencies
+npm install
 
-3.  **Setup Environment Variables**
-    Copy the example env file:
-    ```bash
-    cp .env.example .env.local
-    ```
-    Fill in your keys in `.env.local`:
-    - `DATABASE_URL` (Postgres connection string)
-    - `BETTER_AUTH_SECRET` (Generate using `openssl rand -base64 32`)
-    - `UPLOADTHING_SECRET`, `UPLOADTHING_APP_ID` (From Uploadthing dashboard)
-    - `RESEND_API_KEY` (From Resend dashboard)
+# Setup environment
+cp .env.example .env.local
+# Fill in your keys in .env.local
 
-4.  **Initialize Database**
-    ```bash
-    npx prisma migrate dev
-    ```
+# Initialize database
+npx prisma migrate dev
 
-5.  **Run Development Server**
-    ```bash
-    npm run dev
-    ```
-    Open [http://localhost:3000](http://localhost:3000) to view the site.
+# Start development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view the site.
+
+---
 
 ## 📂 Project Structure
 
 ```
 src/
-├── app/                  # Next.js App Router structure
+├── app/                  # Next.js App Router
 │   ├── [locale]/         # Public pages (en/ar)
-│   ├── admin/            # Protected admin dashboard
-│   └── api/              # API routes (Uploadthing, Auth, etc.)
-├── components/           # Reusable React components
-│   ├── ui/               # Shadcn UI primitives
-│   ├── projects/         # Project-specific components
-│   └── ...
-├── lib/                  # Utilities (DB, Auth, Validations)
-├── actions/              # Server Actions for mutations
+│   ├── admin/            # Protected dashboard
+│   └── api/              # API routes
+├── components/           # React components
+│   ├── ui/               # Shadcn primitives
+│   └── layout/           # Header, Footer, etc.
+├── lib/                  # Utilities (DB, Auth)
+├── actions/              # Server Actions
 └── types/                # TypeScript interfaces
 ```
 
-## 🚢 Deployment
+---
 
-The project is optimized for deployment on **Vercel**.
+## � GitHub Stats
 
-1.  Push your code to GitHub.
-2.  Import the project in Vercel.
-3.  Add your environment variables in the Vercel dashboard.
-4.  Deploy!
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=mahmoud-teir&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117" alt="GitHub Stats" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mahmoud-teir&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117" alt="Top Languages" />
+</p>
+
+---
+
+## �🚢 Deployment
+
+The project is optimized for **Vercel**.
+
+1. Push code to GitHub
+2. Import project in Vercel
+3. Add environment variables
+4. Deploy! ✨
+
+---
 
 ## 📜 License
 
-This project is licensed under the MIT License.
-\n<- Detail pages: project, blog Deployed at Wed Jan 21 06:43:38 PM EET 2026 -->
+This project is licensed under the **MIT License**.
+
+---
+
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=mahmoud-teir&style=for-the-badge&color=2563EB" alt="Profile Views" />
+</p>
