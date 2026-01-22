@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Cairo } from "next/font/google";
+import { Outfit, Cairo } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { NextIntlClientProvider } from "next-intl";
@@ -9,8 +9,8 @@ import messages from "../../messages/en.json";
 import "./globals.css";
 import "@uploadthing/react/styles.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
 });
 
@@ -52,7 +52,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${cairo.variable} font-sans antialiased`}>
+      <body className={`${outfit.variable} ${cairo.variable} font-sans antialiased`}>
         <ThemeProvider>
           <NextIntlClientProvider messages={messages} locale="en">
             <Header />

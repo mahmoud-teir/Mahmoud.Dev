@@ -54,7 +54,7 @@ export default async function AboutPage({ params }: Props) {
                     </p>
                     {settings?.cvUrl && (
                         <Button asChild size="lg">
-                            <a href={settings.cvUrl} target="_blank" rel="noopener noreferrer">
+                            <a href={settings.cvUrl} download="Mahmoud_Teir_CV.pdf">
                                 <Download className="me-2 h-4 w-4" />
                                 {isAr ? "تحميل السيرة الذاتية" : "Download CV"}
                             </a>

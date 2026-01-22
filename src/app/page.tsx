@@ -89,9 +89,9 @@ export default async function HomePage({ params }: Props) {
                         </p>
                         {settings?.cvUrl && (
                             <Button variant="outline" asChild>
-                                <Link href={settings.cvUrl} target="_blank">
+                                <a href={settings.cvUrl} download="Mahmoud_Teir_CV.pdf">
                                     <Download className="me-2 h-4 w-4" /> Download CV
-                                </Link>
+                                </a>
                             </Button>
                         )}
                     </div>

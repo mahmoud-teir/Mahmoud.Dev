@@ -10,7 +10,15 @@ export const auth = betterAuth({
         enabled: true,
     },
     session: {
-        expiresIn: 60 * 60 * 24 * 7, // 7 days
-        updateAge: 60 * 60 * 24, // 1 day
+        expiresIn: 60 * 60 * 24 * 30, // 30 days
+        updateAge: 60 * 60 * 24, // 1 day - refresh session token daily
+        cookieCache: {
+            enabled: true,
+            maxAge: 60 * 5, // 5 minutes cache
+        },
+    },
+    advanced: {
+        cookiePrefix: "portfolio",
+        useSecureCookies: process.env.NODE_ENV === "production",
     },
 });

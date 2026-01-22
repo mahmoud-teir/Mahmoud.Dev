@@ -1,9 +1,12 @@
 "use client";
 
+import { Logo } from "@/components/logo";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
+
+import { MobileNav } from "@/components/layout/mobile-nav";
 
 export default function Header() {
     const t = useTranslations("nav");
@@ -13,18 +16,17 @@ export default function Header() {
         { href: "/projects", label: t("projects") },
         { href: "/blog", label: t("blog") },
         { href: "/experience", label: t("experience") },
-        { href: "/contact", label: t("contact") },
     ];
 
     return (
         <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container flex h-16 items-center justify-between">
                 <Link href="/" className="font-bold text-2xl tracking-tighter hover:opacity-80 transition-opacity flex items-center gap-2">
-                    <img src="/logo.svg" alt="Logo" className="h-10 w-auto" />
-                    <span>Mahmoud<span className="text-primary">.Dev</span></span>
+                    <Logo className="h-10 w-10 text-primary" />
+                    <span>Mahmoud <span className="text-primary">Teir</span></span>
                 </Link>
 
-                <nav className="hidden md:flex items-center gap-6">
+                <nav className="desktop-nav items-center gap-6">
                     {navLinks.map((link) => (
                         <Link
                             key={link.href}
@@ -38,9 +40,10 @@ export default function Header() {
 
                 <div className="flex items-center gap-2">
                     <ThemeToggle />
-                    <Button asChild className="hidden md:inline-flex">
+                    <Button asChild className="desktop-contact-btn">
                         <Link href="/contact">{t("contact")}</Link>
                     </Button>
+                    <MobileNav />
                 </div>
             </div>
         </header>
