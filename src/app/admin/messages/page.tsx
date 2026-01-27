@@ -30,7 +30,7 @@ export default async function AdminMessagesPage() {
             ) : (
                 <div className="space-y-4">
                     {messages.map((message) => (
-                        <Card key={message.id} className={message.read ? "opacity-60" : ""}>
+                        <Card key={message.id} className={`hover:shadow-md transition-all duration-200 ${message.read ? "opacity-75 bg-muted/30" : "border-l-4 border-l-primary"}`}>
                             <CardHeader className="pb-2">
                                 <div className="flex items-start justify-between">
                                     <div className="flex items-center gap-4">

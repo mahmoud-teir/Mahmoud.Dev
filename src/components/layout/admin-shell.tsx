@@ -127,13 +127,13 @@ export function AdminShell({
     return (
         <div className="flex h-screen overflow-hidden bg-background">
             {/* Desktop Sidebar */}
-            <aside className="hidden md:flex w-64 flex-col border-r bg-card">
+            <aside className="hidden lg:flex w-64 flex-col border-r bg-card">
                 <NavContent />
             </aside>
 
             {/* Mobile Header & Content */}
             <div className="flex flex-1 flex-col overflow-hidden">
-                <header className="flex h-16 items-center border-b px-4 md:hidden bg-card">
+                <header className="flex h-16 items-center border-b px-4 lg:hidden bg-card">
                     <Sheet open={open} onOpenChange={setOpen}>
                         <SheetTrigger asChild>
                             <Button variant="ghost" size="icon" className="mr-2">

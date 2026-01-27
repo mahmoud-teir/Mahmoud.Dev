@@ -32,7 +32,7 @@ export default async function AdminTestimonialsPage() {
             ) : (
                 <div className="grid gap-4 md:grid-cols-2">
                     {testimonials.map((testimonial) => (
-                        <Card key={testimonial.id}>
+                        <Card key={testimonial.id} className="hover:shadow-lg transition-all duration-300">
                             <CardContent className="p-6">
                                 <div className="flex items-start justify-between mb-4">
                                     <div>

@@ -82,7 +82,7 @@ export default function AdminCertificationsPage() {
             ) : (
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                     {certifications.map((cert) => (
-                        <Card key={cert.id} className="overflow-hidden">
+                        <Card key={cert.id} className="overflow-hidden flex flex-col h-full hover:shadow-lg transition-all duration-300">
                             {cert.image && (
                                 <div className="h-32 bg-muted flex items-center justify-center">
                                     <img

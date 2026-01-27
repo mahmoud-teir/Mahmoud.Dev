@@ -58,49 +58,49 @@ export function SettingsForm({ settings }: { settings: Settings }) {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl">
+        <form onSubmit={handleSubmit} className="space-y-6 max-w-4xl">
             <Card>
                 <CardHeader>
                     <CardTitle>Profile</CardTitle>
                     <CardDescription>Your personal information displayed on the site</CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                    <div className="space-y-2">
-                        <label className="text-sm font-medium">Bio (English)</label>
-                        <textarea
-                            value={formData.bio}
-                            onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
-                            rows={4}
-                            className="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-                            placeholder="Write a short bio about yourself..."
-                        />
-                    </div>
-                    <div className="space-y-2">
-                        <label className="text-sm font-medium">Bio (Arabic)</label>
-                        <textarea
-                            value={formData.bioAr}
-                            onChange={(e) => setFormData({ ...formData, bioAr: e.target.value })}
-                            rows={4}
-                            dir="rtl"
-                            className="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-                            placeholder="اكتب نبذة عن نفسك..."
-                        />
-                    </div>
-                    <div className="space-y-2">
-                        <label className="text-sm font-medium">CV</label>
-                        <div className="space-y-4">
-                            <UploadDropzone
-                                endpoint="cvUploader"
-                                onClientUploadComplete={(res: any) => {
-                                    if (res && res[0]) {
-                                        setFormData({ ...formData, cvUrl: res[0].url });
-                                        toast.success("CV uploaded successfully!");
-                                    }
-                                }}
-                                onUploadError={(error: Error) => {
-                                    toast.error(`Error uploading CV: ${error.message}`);
-                                }}
+                <CardContent className="space-y-6">
+                    <div className="grid gap-6 md:grid-cols-2">
+                        <div className="space-y-2">
+                            <label className="text-sm font-medium">Bio (English)</label>
+                            <textarea
+                                value={formData.bio}
+                                onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
+                                rows={6}
+                                className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm resize-none focus-visible:ring-1 focus-visible:ring-ring"
+                                placeholder="Write a short bio about yourself..."
                             />
+                        </div>
+                        <div className="space-y-2">
+                            <label className="text-sm font-medium">Bio (Arabic)</label>
+                            <textarea
+                                value={formData.bioAr}
+                                onChange={(e) => setFormData({ ...formData, bioAr: e.target.value })}
+                                rows={6}
+                                dir="rtl"
+                                className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm resize-none focus-visible:ring-1 focus-visible:ring-ring"
+                                placeholder="اكتب نبذة عن نفسك..."
+                            />
+                        </div>
+                    </div>
+
+                    <div className="grid gap-6 md:grid-cols-2">
+                        <div className="space-y-2">
+                            <label className="text-sm font-medium">Contact Email</label>
+                            <Input
+                                type="email"
+                                value={formData.email}
+                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                placeholder="your@email.com"
+                            />
+                        </div>
+                        <div className="space-y-2">
+                            <label className="text-sm font-medium">CV</label>
                             <div className="flex gap-2">
                                 <Input
                                     value={formData.cvUrl}
@@ -114,20 +114,26 @@ export function SettingsForm({ settings }: { settings: Settings }) {
                                         size="icon"
                                         onClick={() => window.open(formData.cvUrl, "_blank")}
                                     >
-                                        <Save className="h-4 w-4" /> {/* Using Save icon for now or ExternalLink if imported */}
+                                        <Save className="h-4 w-4" />
                                     </Button>
                                 )}
                             </div>
+                            <div className="mt-2">
+                                <UploadDropzone
+                                    endpoint="cvUploader"
+                                    onClientUploadComplete={(res: any) => {
+                                        if (res && res[0]) {
+                                            setFormData({ ...formData, cvUrl: res[0].url });
+                                            toast.success("CV uploaded successfully!");
+                                        }
+                                    }}
+                                    onUploadError={(error: Error) => {
+                                        toast.error(`Error uploading CV: ${error.message}`);
+                                    }}
+                                    className="ut-label:text-primary ut-button:bg-primary ut-button:ut-readying:bg-primary/50"
+                                />
+                            </div>
                         </div>
-                    </div>
-                    <div className="space-y-2">
-                        <label className="text-sm font-medium">Contact Email</label>
-                        <Input
-                            type="email"
-                            value={formData.email}
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            placeholder="your@email.com"
-                        />
                     </div>
                 </CardContent>
             </Card>
@@ -137,38 +143,42 @@ export function SettingsForm({ settings }: { settings: Settings }) {
                     <CardTitle>Social Links</CardTitle>
                     <CardDescription>Your social media profiles</CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                    <div className="space-y-2">
-                        <label className="text-sm font-medium">GitHub</label>
-                        <Input
-                            value={formData.github}
-                            onChange={(e) => setFormData({ ...formData, github: e.target.value })}
-                            placeholder="https://github.com/username"
-                        />
-                    </div>
-                    <div className="space-y-2">
-                        <label className="text-sm font-medium">LinkedIn</label>
-                        <Input
-                            value={formData.linkedin}
-                            onChange={(e) => setFormData({ ...formData, linkedin: e.target.value })}
-                            placeholder="https://linkedin.com/in/username"
-                        />
-                    </div>
-                    <div className="space-y-2">
-                        <label className="text-sm font-medium">Twitter / X</label>
-                        <Input
-                            value={formData.twitter}
-                            onChange={(e) => setFormData({ ...formData, twitter: e.target.value })}
-                            placeholder="https://twitter.com/username"
-                        />
+                <CardContent>
+                    <div className="grid gap-4 md:grid-cols-3">
+                        <div className="space-y-2">
+                            <label className="text-sm font-medium">GitHub</label>
+                            <Input
+                                value={formData.github}
+                                onChange={(e) => setFormData({ ...formData, github: e.target.value })}
+                                placeholder="https://github.com/username"
+                            />
+                        </div>
+                        <div className="space-y-2">
+                            <label className="text-sm font-medium">LinkedIn</label>
+                            <Input
+                                value={formData.linkedin}
+                                onChange={(e) => setFormData({ ...formData, linkedin: e.target.value })}
+                                placeholder="https://linkedin.com/in/username"
+                            />
+                        </div>
+                        <div className="space-y-2">
+                            <label className="text-sm font-medium">Twitter / X</label>
+                            <Input
+                                value={formData.twitter}
+                                onChange={(e) => setFormData({ ...formData, twitter: e.target.value })}
+                                placeholder="https://twitter.com/username"
+                            />
+                        </div>
                     </div>
                 </CardContent>
             </Card>
 
-            <Button type="submit" disabled={loading}>
-                <Save className="h-4 w-4 mr-2" />
-                {loading ? "Saving..." : "Save Settings"}
-            </Button>
+            <div className="flex justify-end">
+                <Button type="submit" disabled={loading} size="lg">
+                    <Save className="h-4 w-4 mr-2" />
+                    {loading ? "Saving..." : "Save Changes"}
+                </Button>
+            </div>
         </form>
     );
 }

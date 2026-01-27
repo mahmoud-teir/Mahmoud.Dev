@@ -93,9 +93,9 @@ export default function AdminSkillsPage() {
                                 <CardTitle>{category}</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <div className="space-y-4">
+                                <div className="grid gap-4 md:grid-cols-2">
                                     {categorySkills.map((skill) => (
-                                        <div key={skill.id} className="flex items-center gap-4">
+                                        <div key={skill.id} className="flex items-center gap-4 p-3 rounded-lg border bg-card hover:shadow-sm transition-all">
                                             <div className="flex-1">
                                                 <div className="flex justify-between mb-1">
                                                     <span className="font-medium">{skill.name}</span>
@@ -108,18 +108,19 @@ export default function AdminSkillsPage() {
                                                     />
                                                 </div>
                                             </div>
-                                            <div className="flex gap-2">
-                                                <Button variant="ghost" size="icon" asChild>
+                                            <div className="flex gap-1">
+                                                <Button variant="ghost" size="icon" className="h-8 w-8" asChild>
                                                     <Link href={`/admin/skills/${skill.id}/edit`}>
-                                                        <Edit className="h-4 w-4" />
+                                                        <Edit className="h-3.5 w-3.5" />
                                                     </Link>
                                                 </Button>
                                                 <Button
                                                     variant="ghost"
                                                     size="icon"
+                                                    className="h-8 w-8 text-destructive hover:text-destructive"
                                                     onClick={() => deleteSkill(skill.id)}
                                                 >
-                                                    <Trash2 className="h-4 w-4 text-destructive" />
+                                                    <Trash2 className="h-3.5 w-3.5" />
                                                 </Button>
                                             </div>
                                         </div>

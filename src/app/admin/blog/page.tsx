@@ -2,14 +2,7 @@ import { db } from "@/lib/db";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "@/components/ui/table";
+import { Card, CardContent } from "@/components/ui/card";
 import { Plus, Edit } from "lucide-react";
 
 async function getBlogPosts() {
@@ -32,68 +25,52 @@ export default async function AdminBlogPage() {
                 </Button>
             </div>
 
-            <div className="rounded-md border">
-                <Table>
-                    <TableHeader>
-                        <TableRow>
-                            <TableHead>Title</TableHead>
-                            <TableHead>Status</TableHead>
-                            <TableHead>Tags</TableHead>
-                            <TableHead>Published</TableHead>
-                            <TableHead>Created</TableHead>
-                            <TableHead className="text-right">Actions</TableHead>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                        {posts.length === 0 ? (
-                            <TableRow>
-                                <TableCell colSpan={6} className="text-center text-muted-foreground py-8">
-                                    No blog posts found. Write your first post!
-                                </TableCell>
-                            </TableRow>
-                        ) : (
-                            posts.map((post) => (
-                                <TableRow key={post.id}>
-                                    <TableCell className="font-medium">{post.title}</TableCell>
-                                    <TableCell>
-                                        <Badge variant={post.status === "PUBLISHED" ? "default" : "secondary"}>
-                                            {post.status}
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {posts.length === 0 ? (
+                    <Card className="col-span-full">
+                        <CardContent className="py-12 text-center text-muted-foreground">
+                            No blog posts found. Write your first post!
+                        </CardContent>
+                    </Card>
+                ) : (
+                    posts.map((post) => (
+                        <Card key={post.id} className="flex flex-col h-full hover:shadow-lg transition-all duration-300">
+                            <div className="p-6 flex-1 space-y-4">
+                                <div className="flex items-start justify-between">
+                                    <h3 className="font-semibold text-lg line-clamp-2" title={post.title}>
+                                        {post.title}
+                                    </h3>
+                                    <Badge variant={post.status === "PUBLISHED" ? "default" : "secondary"}>
+                                        {post.status.toLowerCase()}
+                                    </Badge>
+                                </div>
+
+                                <div className="flex flex-wrap gap-1.5">
+                                    {post.tags.slice(0, 3).map((tag) => (
+                                        <Badge key={tag} variant="secondary" className="px-2 py-0.5 text-xs">
+                                            {tag}
                                         </Badge>
-                                    </TableCell>
-                                    <TableCell>
-                                        <div className="flex gap-1 flex-wrap">
-                                            {post.tags.slice(0, 2).map((tag) => (
-                                                <Badge key={tag} variant="secondary" className="text-xs">
-                                                    {tag}
-                                                </Badge>
-                                            ))}
-                                            {post.tags.length > 2 && (
-                                                <Badge variant="secondary" className="text-xs">
-                                                    +{post.tags.length - 2}
-                                                </Badge>
-                                            )}
-                                        </div>
-                                    </TableCell>
-                                    <TableCell>
-                                        {post.publishedAt
-                                            ? new Date(post.publishedAt).toLocaleDateString()
-                                            : "-"}
-                                    </TableCell>
-                                    <TableCell>
-                                        {new Date(post.createdAt).toLocaleDateString()}
-                                    </TableCell>
-                                    <TableCell className="text-right">
-                                        <Button variant="ghost" size="icon" asChild>
-                                            <Link href={`/admin/blog/${post.id}/edit`}>
-                                                <Edit className="h-4 w-4" />
-                                            </Link>
-                                        </Button>
-                                    </TableCell>
-                                </TableRow>
-                            ))
-                        )}
-                    </TableBody>
-                </Table>
+                                    ))}
+                                </div>
+
+                                <div className="text-sm text-muted-foreground space-y-1">
+                                    <p>Created: {new Date(post.createdAt).toLocaleDateString()}</p>
+                                    {post.publishedAt && (
+                                        <p>Published: {new Date(post.publishedAt).toLocaleDateString()}</p>
+                                    )}
+                                </div>
+                            </div>
+
+                            <div className="p-4 border-t bg-muted/20 flex justify-end">
+                                <Button variant="ghost" size="sm" asChild className="h-8">
+                                    <Link href={`/admin/blog/${post.id}/edit`}>
+                                        <Edit className="h-3.5 w-3.5 mr-1.5" /> Edit
+                                    </Link>
+                                </Button>
+                            </div>
+                        </Card>
+                    ))
+                )}
             </div>
         </div>
     );
