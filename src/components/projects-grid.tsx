@@ -62,7 +62,7 @@ export function ProjectsGrid({ projects }: { projects: Project[] }) {
                                     />
                                 )}
                             </div>
-                            <CardContent className="p-6">
+                            <CardContent className="p-6 text-center flex flex-col items-center">
                                 <Link href={`/projects/${project.slug}`}>
                                     <h2 className="text-xl font-semibold mb-2 hover:text-primary transition-colors">
                                         {project.title}
@@ -71,7 +71,7 @@ export function ProjectsGrid({ projects }: { projects: Project[] }) {
                                 <p className="text-muted-foreground mb-4 line-clamp-2">
                                     {project.description}
                                 </p>
-                                <div className="flex flex-wrap gap-2 mb-4">
+                                <div className="flex flex-wrap justify-center gap-2 mb-4">
                                     {project.technologies.slice(0, 4).map((tech: string) => (
                                         <Badge
                                             key={tech}
@@ -83,7 +83,7 @@ export function ProjectsGrid({ projects }: { projects: Project[] }) {
                                         </Badge>
                                     ))}
                                 </div>
-                                <div className="flex gap-2">
+                                <div className="flex justify-center gap-2">
                                     {project.liveUrl && (
                                         <Button size="sm" asChild>
                                             <Link href={project.liveUrl} target="_blank">

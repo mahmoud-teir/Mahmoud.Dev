@@ -29,6 +29,7 @@ export function MobileNav() {
                 </Button>
             </SheetTrigger>
             <SheetContent side="left" className="flex flex-col gap-6 pl-2">
+                <SheetTitle className="sr-only">Mobile NavigationMenu</SheetTitle>
                 <div className="px-7">
                     <Link href="/" className="flex items-center gap-2 font-bold text-2xl tracking-tighter" onClick={() => setOpen(false)}>
                         <Logo className="h-8 w-8 text-primary" />

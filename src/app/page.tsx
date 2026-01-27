@@ -108,19 +108,19 @@ export default async function HomePage({ params }: Props) {
                         {projects.map((project) => (
                             <Card key={project.id} className="overflow-hidden">
                                 <div className="aspect-video bg-muted" />
-                                <CardContent className="p-6">
+                                <CardContent className="p-6 text-center flex flex-col items-center">
                                     <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
                                     <p className="text-muted-foreground mb-4 line-clamp-2">
                                         {project.description}
                                     </p>
-                                    <div className="flex flex-wrap gap-2 mb-4">
+                                    <div className="flex flex-wrap justify-center gap-2 mb-4">
                                         {project.technologies.slice(0, 3).map((tech: string) => (
                                             <Badge key={tech} variant="secondary">
                                                 {tech}
                                             </Badge>
                                         ))}
                                     </div>
-                                    <div className="flex gap-2">
+                                    <div className="flex justify-center gap-2">
                                         {project.liveUrl && (
                                             <Button size="sm" asChild>
                                                 <Link href={project.liveUrl} target="_blank">
@@ -176,7 +176,7 @@ export default async function HomePage({ params }: Props) {
                         <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
                             {testimonials.map((testimonial) => (
                                 <Card key={testimonial.id}>
-                                    <CardContent className="p-6">
+                                    <CardContent className="p-6 text-center">
                                         <p className="text-muted-foreground mb-4 italic">
                                             &quot;{testimonial.quote}&quot;
                                         </p>

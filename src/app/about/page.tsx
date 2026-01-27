@@ -71,7 +71,7 @@ export default async function AboutPage({ params }: Props) {
                         <div className="grid gap-8 md:grid-cols-2">
                             {Object.entries(groupedSkills).map(([category, categorySkills]) => (
                                 <Card key={category}>
-                                    <CardContent className="p-6">
+                                    <CardContent className="p-6 text-center">
                                         <h3 className="text-xl font-semibold mb-4">{category}</h3>
                                         <div className="space-y-4">
                                             {categorySkills.map((skill) => (
@@ -119,14 +119,14 @@ export default async function AboutPage({ params }: Props) {
                                             />
                                         </div>
                                     )}
-                                    <CardContent className="p-4">
+                                    <CardContent className="p-4 text-center">
                                         <h3 className="font-semibold mb-1">
                                             {isAr && cert.nameAr ? cert.nameAr : cert.name}
                                         </h3>
                                         <p className="text-sm text-muted-foreground mb-2">
                                             {isAr && cert.issuerAr ? cert.issuerAr : cert.issuer}
                                         </p>
-                                        <div className="flex items-center justify-between">
+                                        <div className="flex items-center justify-center gap-2">
                                             <Badge variant="secondary">
                                                 {cert.issueDate.toLocaleDateString(locale, { year: "numeric", month: "short" })}
                                             </Badge>
@@ -161,12 +161,12 @@ export default async function AboutPage({ params }: Props) {
                                         <div className="absolute -start-[41px] w-4 h-4 bg-primary rounded-full border-4 border-background" />
 
                                         <Card className="hover:shadow-lg transition-shadow">
-                                            <CardContent className="p-6">
-                                                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                                            <CardContent className="p-6 text-center">
+                                                <div className="flex flex-col items-center mb-2">
                                                     <h3 className="text-xl font-semibold">
                                                         {isAr && exp.roleAr ? exp.roleAr : exp.role}
                                                     </h3>
-                                                    <Badge variant="outline">
+                                                    <Badge variant="outline" className="mt-2">
                                                         {exp.startDate.toLocaleDateString(locale, { month: "short", year: "numeric" })}
                                                         {" - "}
                                                         {exp.current
